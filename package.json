@@ -1,0 +1,19 @@
+{
+  "name": "TeslaRange",
+  "version": "0.0.0",
+  "description": " Easy to use, fast, accurate range projections for Tesla car",
+  "main": "app.js",
+  "dependencies": {
+    "mithril": "^0.1.24"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "tesla",
+    "range"
+  ],
+  "author": "Keenan Lidral-Porter",
+  "license": "ISC"
+}
