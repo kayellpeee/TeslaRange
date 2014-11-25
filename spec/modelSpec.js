@@ -46,6 +46,29 @@ function testMithril(mockWindow) {
       return typeof rangeCalculations.model.getLocation(37.7836565, -122.409139)[0][0] === 'number';
     });
 
+    test(function(){
+      // calculateDistance takes in a location, destination & options. Returns distance in mi or specified unit
+      var location = [37.7836565, -122.409139];
+      var destination = [37.493554, -121.945435];
+      var options = {
+        units: 'mi',
+        elevationFrequency: 1000    // check elevation 1000 times / mi (once every ~5 ft)
+      };
+      test(function(){
+        return Array.isArray(calculateDistance(location, destination, options));
+      });
+      test(function(){
+        return typeof calculateDistance(location, destination, options)[0] === 'number';
+      });
+      test(function(){
+        return typeof calculateDistance(location, destination, options)[1] === 'object';
+      });
+      test(function(){
+        return calculateDistance(location, destination, options)[1].units === 'mi';
+      });
+      return calculateDistance(location, destination, options)[1].elevationFrequency === 1000;
+    });
+
   });
 
 };
