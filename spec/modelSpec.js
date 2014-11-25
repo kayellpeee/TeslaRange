@@ -23,6 +23,17 @@ function testMithril(mockWindow) {
       });
     });
 
+    test(function(){
+      // getLocation should return coordinates, along with epoch timestamp
+      test(function(){
+        return Array.isArray(rangeCalculations.model.getLocation());
+      });
+      test(function(){
+        return rangeCalculations.model.getLocation().length === 3;
+      });
+      return typeof rangeCalculations.model.getLocation()[0] === 'number';
+    });
+
   });
 
 };
