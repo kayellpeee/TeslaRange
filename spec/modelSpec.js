@@ -18,20 +18,18 @@ function testMithril(mockWindow) {
       test(function(){
         return typeof rangeCalculations.model.calculateDistance === 'function';
       });
-      test(function(){
-        return typeof rangeCalculations.model.calculateChargeNeeded === 'function';
-      });
+      return typeof rangeCalculations.model.calculateChargeNeeded === 'function';
     });
 
     test(function(){
       // getLocation should return coordinates, along with epoch timestamp
       test(function(){
-        return Array.isArray(rangeCalculations.model.getLocation());
+        return typeof rangeCalculations.model.getLocation() === 'object';
       });
       test(function(){
-        return rangeCalculations.model.getLocation().length === 3;
+        return Array.isArray(rangeCalculations.model.getLocation().coordinates);
       });
-      return typeof rangeCalculations.model.getLocation()[0] === 'number';
+      return typeof rangeCalculations.model.getLocation().timestamp === 'number';
     });
 
     test(function(){
