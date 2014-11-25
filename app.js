@@ -1,0 +1,2 @@
+var rangeCalculations = {};
+var settings = {};
