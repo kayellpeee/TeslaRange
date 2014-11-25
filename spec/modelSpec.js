@@ -22,14 +22,15 @@ function testMithril(mockWindow) {
     });
 
     test(function(){
-      // getLocation should return coordinates, along with epoch timestamp
+      // getLocation should return a function that when called returns the current location
+      var position = rangeCalculations.model.getLocation();
       test(function(){
-        return typeof rangeCalculations.model.getLocation() === 'object';
+        return typeof rangeCalculations.model.getLocation() === 'function';
       });
       test(function(){
-        return Array.isArray(rangeCalculations.model.getLocation().coordinates);
+        return Array.isArray(position().coordinates);
       });
-      return typeof rangeCalculations.model.getLocation().timestamp === 'number';
+      return typeof position().timestamp === 'number';
     });
 
     test(function(){
