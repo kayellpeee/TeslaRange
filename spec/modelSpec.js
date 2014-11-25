@@ -10,16 +10,16 @@ function testMithril(mockWindow) {
         return typeof rangeCalculations.model === 'object';
       });
       test(function(){
-        return rangeCalculations.model.getLocation === 'function';
+        return typeof rangeCalculations.model.getLocation === 'function';
       });
       test(function(){
-        return rangeCalculations.model.getNearestChargers === 'function';
+        return typeof rangeCalculations.model.getNearestChargers === 'function';
       });
       test(function(){
-        return rangeCalculations.model.calculateDistance === 'function';
+        return typeof rangeCalculations.model.calculateDistance === 'function';
       });
       test(function(){
-        return rangeCalculations.model.calculateChargeNeeded === 'function';
+        return typeof rangeCalculations.model.calculateChargeNeeded === 'function';
       });
     });
 
