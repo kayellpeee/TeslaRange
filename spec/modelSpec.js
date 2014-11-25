@@ -34,6 +34,18 @@ function testMithril(mockWindow) {
       return typeof rangeCalculations.model.getLocation()[0] === 'number';
     });
 
+    test(function(){
+      // getNearestChargers should take in coordinates and return an array of charger locations (coordinates)
+      test(function(){
+        // latitude, longitude
+        return Array.isArray(rangeCalculations.model.getNearestChargers(37.7836565, -122.409139));
+      });
+      test(function(){
+        return Array.isArray(rangeCalculations.model.getNearestChargers(37.7836565, -122.409139)[0]);
+      });
+      return typeof rangeCalculations.model.getLocation(37.7836565, -122.409139)[0][0] === 'number';
+    });
+
   });
 
 };
