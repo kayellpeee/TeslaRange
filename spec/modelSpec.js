@@ -27,10 +27,24 @@ function testMithril(mockWindow) {
       test(function(){
         return typeof rangeCalculations.model.getLocation() === 'function';
       });
-      test(function(){
-        return Array.isArray(position().coordinates);
-      });
-      return typeof position().timestamp === 'number';
+
+      // this is a test that checks every tick whether or not the asynchronous call to navigator
+      // get location has completed - must include additional test.print to log results
+      // (should refactor this test)
+      var testPosition = setInterval(function(){
+        if( position().timestamp ){
+          test(function(){
+            return typeof position().timestamp === 'number';
+          });
+          test(function(){
+            return typeof position().coordinates[0] === 'number';
+          });
+          clearInterval(testPosition);
+          test.print(function(value) {console.log(value)});
+        }
+      }, 100);
+
+      return Array.isArray(position().coordinates);
     });
 
     test(function(){
