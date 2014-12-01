@@ -75,34 +75,31 @@ function testMithril(mockWindow) {
       var options = {
         units: 'mi',
         batterySize: 85,        // kWh  (kilowatt hour)
-        buffer: 5,              // 5 miles
+        buffer: 15,              // 15 miles
         averageEnergy: 300      // Wh/mi  (Watt hours per mile)
       };
       test(function(){
-        return Array.isArray(calculateChargeNeeded(distance, options));
+        return typeof rangeCalculations.model.calculateChargeNeeded(distance, options) === 'object';
       });
       test(function(){
-        return typeof calculateChargeNeeded(distance, options)[0] === 'number';
+        return typeof rangeCalculations.model.calculateChargeNeeded(distance, options).ratedChargeNeeded === 'number';
       });
       test(function(){
-        // distance of 100 mi at averageEnergy of 300, 5 mi buffer = 105 mi of rated charge
+        // distance of 100 mi at averageEnergy of 300, 15 mi buffer = 115 mi of rated charge
         // rated charge is calculated assuming an average energy usage of 300 Wh/mi for the trip
-        return typeof calculateChargeNeeded(distance, options)[0] === 105;
+        return typeof rangeCalculations.model.calculateChargeNeeded(distance, options).ratedChargeNeeded === 115;
       });
       test(function(){
-        return typeof calculateChargeNeeded(distance, options)[1] === 'object';
+        return rangeCalculations.model.calculateChargeNeeded(distance, options).batterySize === options.batterySize;
       });
       test(function(){
-        return calculateChargeNeeded(distance, options)[1].batterySize === options.batterySize;
-      });
-      test(function(){
-        return calculateChargeNeeded(distance, options)[1].buffer === options.buffer;
+        return rangeCalculations.model.calculateChargeNeeded(distance, options).buffer === options.buffer;
       });
       test(function(){
         // should default to 85 kWh battery (defaults are in the options object above)
-        return calculateChargeNeeded(ditance)[1].batterySize === 85;
+        return rangeCalculations.model.calculateChargeNeeded(ditance).batterySize === 85;
       });
-      return calculateChargeNeeded(distance, options)[1].averageEnergy === options.averageEnergy;
+      return rangeCalculations.model.calculateChargeNeeded(distance, options).averageEnergy === options.averageEnergy;
     });
 
   });
