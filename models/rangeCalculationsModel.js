@@ -23,7 +23,15 @@ rangeCalculations.model = new function(){
       longitude: -121.945435
     }];
   };
-  methods.calculateDistance = function(location, destination, options){};
+  methods.calculateDistance = function(location, destination, options){
+    var units = options.units || 'mi';
+    var elevationFrequency = options.elevationFrequency || 1000;
+    return {
+      distance: 40.1,
+      units: units,
+      elevationFrequency: elevationFrequency
+    }
+  };
   methods.calculateChargeNeeded = function(distance, options){};
   return methods;
 };
