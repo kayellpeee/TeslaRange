@@ -24,6 +24,9 @@ rangeCalculations.model = new function(){
     }];
   };
   methods.calculateDistance = function(location, destination, options){
+    if( !options ){
+      options = {}
+    }
     var units = options.units || 'mi';
     var elevationFrequency = options.elevationFrequency || 1000;
     return {
@@ -32,6 +35,21 @@ rangeCalculations.model = new function(){
       elevationFrequency: elevationFrequency
     }
   };
-  methods.calculateChargeNeeded = function(distance, options){};
+  methods.calculateChargeNeeded = function(distance, options){
+    if( !options ){
+      options = {};
+    }
+    var units = options.units || 'mi';
+    var batterySize = options.batterySize || 85;          // kWh  (kilowatt hour)
+    var buffer = options.buffer || 15;                    // 15 miles
+    var averageEnergy = options.averageEnergy || 300;     // Wh/mi  (Watt hours per mile)
+    return {
+      ratedChargeNeeded: 115,
+      units: units,
+      batterySize: batterySize,
+      buffer: buffer,
+      averageEnergy: averageEnergy
+    }
+  };
   return methods;
 };
