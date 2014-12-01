@@ -87,7 +87,7 @@ function testMithril(mockWindow) {
       test(function(){
         // distance of 100 mi at averageEnergy of 300, 15 mi buffer = 115 mi of rated charge
         // rated charge is calculated assuming an average energy usage of 300 Wh/mi for the trip
-        return typeof rangeCalculations.model.calculateChargeNeeded(distance, options).ratedChargeNeeded === 115;
+        return rangeCalculations.model.calculateChargeNeeded(distance, options).ratedChargeNeeded === 115;
       });
       test(function(){
         return rangeCalculations.model.calculateChargeNeeded(distance, options).batterySize === options.batterySize;
@@ -97,11 +97,13 @@ function testMithril(mockWindow) {
       });
       test(function(){
         // should default to 85 kWh battery (defaults are in the options object above)
-        return rangeCalculations.model.calculateChargeNeeded(ditance).batterySize === 85;
+        return rangeCalculations.model.calculateChargeNeeded(distance).batterySize === 85;
       });
       return rangeCalculations.model.calculateChargeNeeded(distance, options).averageEnergy === options.averageEnergy;
     });
 
+    // this is here to make sure outermost test function passes (it fails otherwise because of the way tests are nested)
+    return true
   });
 
 };
