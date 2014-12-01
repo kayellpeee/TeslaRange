@@ -40,9 +40,12 @@ function testMithril(mockWindow) {
         return Array.isArray(rangeCalculations.model.getNearestChargers(37.7836565, -122.409139));
       });
       test(function(){
-        return Array.isArray(rangeCalculations.model.getNearestChargers(37.7836565, -122.409139)[0]);
+        return typeof rangeCalculations.model.getNearestChargers(37.7836565, -122.409139)[0] === 'object' ;
       });
-      return typeof rangeCalculations.model.getLocation(37.7836565, -122.409139)[0][0] === 'number';
+      test(function(){
+        return typeof rangeCalculations.model.getNearestChargers(37.7836565, -122.409139)[0].name === 'string';
+      });
+      return typeof rangeCalculations.model.getNearestChargers(37.7836565, -122.409139)[0].latitude === 'number';
     });
 
     test(function(){
