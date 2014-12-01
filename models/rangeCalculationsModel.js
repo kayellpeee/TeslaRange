@@ -16,7 +16,13 @@ rangeCalculations.model = new function(){
       }
     }
   };
-  methods.getNearestChargers = function(latitude, longitude){};
+  methods.getNearestChargers = function(latitude, longitude){
+    return [{
+      name: 'Freemont, CA',
+      latitude: 37.493554,
+      longitude: -121.945435
+    }];
+  };
   methods.calculateDistance = function(location, destination, options){};
   methods.calculateChargeNeeded = function(distance, options){};
   return methods;
