@@ -57,18 +57,15 @@ function testMithril(mockWindow) {
         elevationFrequency: 1000    // check elevation 1000 times / mi (once every ~5 ft)
       };
       test(function(){
-        return Array.isArray(calculateDistance(location, destination, options));
+        return typeof rangeCalculations.model.calculateDistance(location, destination, options) === 'object';
       });
       test(function(){
-        return typeof calculateDistance(location, destination, options)[0] === 'number';
+        return typeof rangeCalculations.model.calculateDistance(location, destination, options).distance === 'number';
       });
       test(function(){
-        return typeof calculateDistance(location, destination, options)[1] === 'object';
+        return rangeCalculations.model.calculateDistance(location, destination, options).units === 'mi';
       });
-      test(function(){
-        return calculateDistance(location, destination, options)[1].units === 'mi';
-      });
-      return calculateDistance(location, destination, options)[1].elevationFrequency === 1000;
+      return rangeCalculations.model.calculateDistance(location, destination, options).elevationFrequency === 1000;
     });
 
     test(function(){
