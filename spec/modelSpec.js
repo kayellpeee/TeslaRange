@@ -88,13 +88,13 @@ function testMithril(mockWindow) {
       rangeCalculations.model.calculateDistance(location, destination, options, function(distance, options){
         
         test(function(){
-          return typeof distance === 'object';
+          return typeof distance === 'number';
         });
         test(function(){
           return typeof options === 'object';
         });
         test(function(){
-          return typeof options.units === 'mi';
+          return options.units === 'mi';
         });
         test(function(){
           return options.elevationFrequency === 1000;
