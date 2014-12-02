@@ -19,17 +19,18 @@ rangeCalculations.model = new function(){
     callback(nearestChargers);
   };
   methods.calculateDistance = function(location, destination, options, callback){
-    if( !options ){
-      options = {}
+    if( typeof options === 'function' ){
+      callback = options;
+      options = {};       // set defaults here? or later on to escape edge cases (passed in options only has units) both?
     }
-    callback();
     var units = options.units || 'mi';
     var elevationFrequency = options.elevationFrequency || 1000;
-    return {
-      distance: 40.1,
+    var distance = 40.1;
+    var options = {
       units: units,
       elevationFrequency: elevationFrequency
-    }
+    };
+    callback(distance, options);
   };
   methods.calculateChargeNeeded = function(distance, options){
     if( !options ){
