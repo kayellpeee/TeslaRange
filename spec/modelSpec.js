@@ -11,9 +11,6 @@ function testMithril(mockWindow) {
         return typeof rangeCalculations.model === 'object';
       });
       test(function(){
-        return typeof Array.isArray(rangeCalculations.model.nearestChargers);
-      });
-      test(function(){
         return typeof rangeCalculations.model.getLocation === 'function';
       });
       test(function(){
@@ -119,28 +116,29 @@ function testMithril(mockWindow) {
         buffer: 15,               // 15 miles
         averageEnergy: 300        // Wh/mi  (Watt hours per mile)
       };
+      rangeCalculations.model.chargeNeeded = rangeCalculations.model.calculateChargeNeeded(distance, options);
       test(function(){
-        return typeof rangeCalculations.model.calculateChargeNeeded(distance, options) === 'object';
+        return typeof rangeCalculations.model.chargeNeeded === 'object';
       });
       test(function(){
-        return typeof rangeCalculations.model.calculateChargeNeeded(distance, options).ratedChargeNeeded === 'number';
+        return typeof rangeCalculations.model.chargeNeeded.ratedChargeNeeded === 'number';
       });
       test(function(){
         // distance of 100 mi at averageEnergy of 300, 15 mi buffer = 115 mi of rated charge
         // rated charge is calculated assuming an average energy usage of 300 Wh/mi for the trip
-        return rangeCalculations.model.calculateChargeNeeded(distance, options).ratedChargeNeeded === 115;
+        return rangeCalculations.model.chargeNeeded.ratedChargeNeeded === 115;
       });
       test(function(){
-        return rangeCalculations.model.calculateChargeNeeded(distance, options).batterySize === options.batterySize;
+        return rangeCalculations.model.chargeNeeded.batterySize === options.batterySize;
       });
       test(function(){
-        return rangeCalculations.model.calculateChargeNeeded(distance, options).buffer === options.buffer;
+        return rangeCalculations.model.chargeNeeded.buffer === options.buffer;
       });
       test(function(){
         // should default to 85 kWh battery (defaults are in the options object above)
         return rangeCalculations.model.calculateChargeNeeded(distance).batterySize === 85;
       });
-      return rangeCalculations.model.calculateChargeNeeded(distance, options).averageEnergy === options.averageEnergy;
+      return rangeCalculations.model.chargeNeeded.averageEnergy === options.averageEnergy;
     });
 
     // this is here to make sure outermost test function passes (it fails otherwise because of the way tests are nested)
