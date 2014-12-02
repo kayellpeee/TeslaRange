@@ -24,6 +24,7 @@ view:
 
 model:
   - calculations model
+  - car data model
   - settings model
 
 controller:
@@ -36,9 +37,32 @@ controller:
 
 _____________________________________________________
 
+MODEL
+range calculations
+  - nearest chargers
+  - get nearest chargers
+  - (distance)
+  - calculate distance
+  - charge needed
+  - calculate charge needed
+  - (avg energy needed)
+  - (calculate avg energy needed)
+  - (time till charge)
+  - (calc time till charge)
+  - 
+  -
 
+car data
+  - location
+  - current charge
+  - misc. charge stats
+  - get current charge
+  - get location
+  - 
+
+~~~~~~~~~~~~~~~~~~~
+MVP : get correct calcs from charging station or elsewhere
++ live updates (charge till time, avg energy, buffer etc)
 
 ~~~~~~~~~~~~~~~~~~~
 
-pitch email of myself
-- send to 10 random meetup organizers
