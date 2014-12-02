@@ -11,12 +11,12 @@ rangeCalculations.model = new function(){
     callback(driverState);
   };
   methods.getNearestChargers = function(latitude, longitude, callback){
-    callback();
-    return [{
+    var nearestChargers = [{
       name: 'Freemont, CA',
       latitude: 37.493554,
       longitude: -121.945435
     }];
+    callback(nearestChargers);
   };
   methods.calculateDistance = function(location, destination, options, callback){
     if( !options ){
