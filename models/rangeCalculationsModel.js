@@ -1,32 +1,28 @@
 rangeCalculations.model = new function(){
   var methods = {};
-  methods.getLocation = function(){
-    var latitude;
-    var longitude;
-    var timestamp;
-    navigator.geolocation.getCurrentPosition(function(position){
-      latitude = position.coords.latitude;
-      longitude = position.coords.longitude;
-      timestamp = position.timestamp;
-    });
-    return function(){
-      return {
-        coordinates: [latitude, longitude],
-        timestamp: timestamp
-      }
-    }
+  methods.getLocation = function(callback){
+    var driverState = {
+      latitude: 37.7836298,
+      longitude: -122.409107,
+      gps_as_of: 1417554704013,
+      heading: 49,
+      speed: 30
+    };
+    callback(driverState);
   };
-  methods.getNearestChargers = function(latitude, longitude){
+  methods.getNearestChargers = function(latitude, longitude, callback){
+    callback();
     return [{
       name: 'Freemont, CA',
       latitude: 37.493554,
       longitude: -121.945435
     }];
   };
-  methods.calculateDistance = function(location, destination, options){
+  methods.calculateDistance = function(location, destination, options, callback){
     if( !options ){
       options = {}
     }
+    callback();
     var units = options.units || 'mi';
     var elevationFrequency = options.elevationFrequency || 1000;
     return {
