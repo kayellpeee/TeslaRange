@@ -47,7 +47,7 @@ function testMithril(mockWindow) {
       return typeof rangeCalculations.model.nearestChargers[0].longitude === 'number';
     });
 
-    // tests getLocation
+    // tests getLocation method (call to tesla api)
     test(function(){
       // should return a function that when called returns the current location
       var position = rangeCalculations.model.getLocation();
@@ -74,7 +74,7 @@ function testMithril(mockWindow) {
       return Array.isArray(position().coordinates);
     });
 
-    // tests getNearestChargers
+    // tests getNearestChargers method (call to google maps api)
     test(function(){
       // should take in coordinates and return an array of charger locations (coordinates)
       test(function(){
@@ -90,7 +90,7 @@ function testMithril(mockWindow) {
       return typeof rangeCalculations.model.getNearestChargers(37.7836565, -122.409139)[0].latitude === 'number';
     });
 
-    // tests calculateDistance
+    // tests calculateDistance method (call to google maps api)
     test(function(){
       // takes in a location, destination & options. Returns distance in mi or specified unit
       var location = [37.7836565, -122.409139];
@@ -111,7 +111,7 @@ function testMithril(mockWindow) {
       return rangeCalculations.model.calculateDistance(location, destination, options).elevationFrequency === 1000;
     });
 
-    // tests calculateChargeNeeded
+    // tests calculateChargeNeeded method
     test(function(){
       // takes a distance & options (units, battery size, estimated buffer, avg. energy usage)
       // returns number of rated miles of charge needed to make the trip, as well as options used for calculation
