@@ -5,12 +5,10 @@ function testMithril(mockWindow) {
 
     // tests for rangeCalculations model
     test(function(){
+
       // should be an object with the proper methods & properties
       test(function(){
         return typeof rangeCalculations.model === 'object';
-      });
-      test(function(){
-        return typeof rangeCalculations.model.location === 'object';
       });
       test(function(){
         return typeof Array.isArray(rangeCalculations.model.nearestChargers);
@@ -24,103 +22,102 @@ function testMithril(mockWindow) {
       test(function(){
         return typeof rangeCalculations.model.calculateDistance === 'function';
       });
+
       return typeof rangeCalculations.model.calculateChargeNeeded === 'function';
     });
 
-    // tests location property on model object
-    test(function(){
+    // tests location property as well as getLocation method on model object
+    rangeCalculations.model.getLocation(function(driveState){
+      // only test location once we've made our call to getLocation
+
+      rangeCalculations.model.location = driveState;
+      test(function(){
+        return typeof rangeCalculations.model.location === 'object';
+      });
       test(function(){
         return typeof rangeCalculations.model.location.latitude === 'number';
       });
       test(function(){
         return typeof rangeCalculations.model.location.longitude === 'number';
       });
-      return typeof rangeCalculations.model.location.timestamp === 'number';
+      test(function(){
+        return typeof rangeCalculations.model.location.gps_as_of === 'number';
+      });
+      test(function(){
+        return typeof rangeCalculations.model.location.heading === 'number';
+      });
+      test(function(){
+        return typeof rangeCalculations.model.location.speed === 'number';
+      });
+
+      test.print(function(value) {console.log(value)});
     });
 
-    // tests nearestChargers property
-    test(function(){
-      // should be an array of objects
+    // tests getNearestChargers method (call to google maps api) & nearestChargers property
+    // should take in coordinates & callback
+    // gives callback access to an array of charger locations (coordinates)
+    rangeCalculations.model.getNearestChargers(37.7836565, -122.409139, function(chargers){
+
+      rangeCalculations.model.nearestChargers = chargers;
+      test(function(){
+        return Array.isArray(rangeCalculations.model.nearestChargers);
+      });
+      test(function(){
+        return typeof rangeCalculations.model.nearestChargers[0] === 'object';
+      });
       test(function(){
         return typeof rangeCalculations.model.nearestChargers[0].name === 'string';
       });
-      return typeof rangeCalculations.model.nearestChargers[0].longitude === 'number';
-    });
-
-    // tests getLocation method (call to tesla api)
-    test(function(){
-      // should return a function that when called returns the current location
-      var position = rangeCalculations.model.getLocation();
       test(function(){
-        return typeof rangeCalculations.model.getLocation() === 'function';
+        return typeof rangeCalculations.model.nearestChargers[0].latitude === 'number';
       });
 
-      // this is a test that checks every tick whether or not the asynchronous call to navigator
-      // get location has completed - must include additional test.print to log results
-      // (should refactor this test)
-      var testPosition = setInterval(function(){
-        if( position().timestamp ){
-          test(function(){
-            return typeof position().timestamp === 'number';
-          });
-          test(function(){
-            return typeof position().coordinates[0] === 'number';
-          });
-          clearInterval(testPosition);
-          test.print(function(value) {console.log(value)});
-        }
-      }, 100);
-
-      return Array.isArray(position().coordinates);
-    });
-
-    // tests getNearestChargers method (call to google maps api)
-    test(function(){
-      // should take in coordinates and return an array of charger locations (coordinates)
-      test(function(){
-        // latitude, longitude
-        return Array.isArray(rangeCalculations.model.getNearestChargers(37.7836565, -122.409139));
-      });
-      test(function(){
-        return typeof rangeCalculations.model.getNearestChargers(37.7836565, -122.409139)[0] === 'object' ;
-      });
-      test(function(){
-        return typeof rangeCalculations.model.getNearestChargers(37.7836565, -122.409139)[0].name === 'string';
-      });
-      return typeof rangeCalculations.model.getNearestChargers(37.7836565, -122.409139)[0].latitude === 'number';
+      test.print(function(value) {console.log(value)});
     });
 
     // tests calculateDistance method (call to google maps api)
     test(function(){
-      // takes in a location, destination & options. Returns distance in mi or specified unit
+
+      // takes in a location, destination, options & callback.
       var location = [37.7836565, -122.409139];
       var destination = [37.493554, -121.945435];
       var options = {
         units: 'mi',
         elevationFrequency: 1000    // check elevation 1000 times / mi (once every ~5 ft)
       };
-      test(function(){
-        return typeof rangeCalculations.model.calculateDistance(location, destination, options) === 'object';
+      rangeCalculations.model.calculateDistance(location, destination, options, function(distance, options){
+        
+        test(function(){
+          return typeof distance === 'object';
+        });
+        test(function(){
+          return typeof options === 'object';
+        });
+        test(function(){
+          return typeof options.units === 'mi';
+        });
+        test(function(){
+          return options.elevationFrequency === 1000;
+        });
+
+        test.print(function(value) {console.log(value)});
       });
-      test(function(){
-        return typeof rangeCalculations.model.calculateDistance(location, destination, options).distance === 'number';
-      });
-      test(function(){
-        return rangeCalculations.model.calculateDistance(location, destination, options).units === 'mi';
-      });
-      return rangeCalculations.model.calculateDistance(location, destination, options).elevationFrequency === 1000;
+
+      // should not need to hold onto distance or store in a variable
+      return !rangeCalculations.model.distance;
     });
 
     // tests calculateChargeNeeded method
     test(function(){
+
       // takes a distance & options (units, battery size, estimated buffer, avg. energy usage)
       // returns number of rated miles of charge needed to make the trip, as well as options used for calculation
       var distance = 100;
       var options = {
         units: 'mi',
-        batterySize: 85,        // kWh  (kilowatt hour)
-        buffer: 15,              // 15 miles
-        averageEnergy: 300      // Wh/mi  (Watt hours per mile)
+        batterySize: 85,          // kWh  (kilowatt hour)
+        buffer: 15,               // 15 miles
+        averageEnergy: 300        // Wh/mi  (Watt hours per mile)
       };
       test(function(){
         return typeof rangeCalculations.model.calculateChargeNeeded(distance, options) === 'object';
