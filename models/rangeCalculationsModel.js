@@ -1,4 +1,4 @@
-rangeCalculations.model = new function(){
+rangeCalculations.model = (function(){
   var methods = {};
   methods.getLocation = function(callback){
     var driverState = {
@@ -49,4 +49,4 @@ rangeCalculations.model = new function(){
     }
   };
   return methods;
-};
+}())
