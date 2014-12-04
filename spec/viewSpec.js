@@ -109,8 +109,14 @@ function testMithril(mock) {
     return rows[4].childNodes[0].childNodes[0].tagName === "INPUT";
   });
   test(function(){
+    return rows[4].childNodes[0].childNodes[0].type === "number";
+  });
+  test(function(){
     // input for Charge Needed
     return rows[4].childNodes[1].childNodes[0].tagName === "INPUT";
+  });
+  test(function(){
+    return rows[4].childNodes[1].childNodes[0].type === "number";
   });
   test(function(){
     // td for distance
@@ -119,6 +125,10 @@ function testMithril(mock) {
   test(function(){
     // input for buffer
     return rows[4].childNodes[3].childNodes[0].tagName === "INPUT";
+  });
+  test(function(){
+    // should be number
+    return rows[4].childNodes[3].childNodes[0].type === "number";
   });
 
 };
