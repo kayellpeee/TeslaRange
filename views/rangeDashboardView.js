@@ -4,6 +4,7 @@ rangeDashboard.view = function(){
       m("th"),
       m("tr"),
       m("tr"),
+      m("tr"),
       m("tr")
       ])
     ]);
