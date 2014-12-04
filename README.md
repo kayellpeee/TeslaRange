@@ -76,7 +76,7 @@ range dashboard
     - buffer                                                    th + td
     - avg energy                                                th + td
     - rated charge needed                                       th + td
-  - input for customizable trip                                 th + td
+  - input for customizable trip                                 th + input
   - 
 
 
@@ -95,7 +95,7 @@ UI
 // i.e.   250 Wh/mi     136 rated range     140 mi to charger     5 mi buffer   (slow or descending)    (55 mph)    (4:03 pm)
 // i.e.   350 Wh/mi     165 rated range     140 mi to charger     5 mi buffer
 // i.e.   450 Wh/mi     205 rated range     140 mi to charger     5 mi buffer   (climbing or high winds or fast)  (80 mph)...
-// input for energy usage || rated range || time of arrival will calculate the rest
+// input for energy usage || rated range || buffer || time of arrival will calculate the rest
 
 // UI
 // button to refresh
