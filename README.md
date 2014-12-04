@@ -39,26 +39,46 @@ _____________________________________________________
 
 MODEL
 range calculations
-  - nearest chargers
-  - get nearest chargers
-  - (distance)
-  - calculate distance
-  - charge needed
-  - calculate charge needed
+  - nearest chargers                √
+  - get nearest chargers            √
+  - calculate distance              √
+  - charge needed                   √
+  - calculate charge needed         √
+  - location                        √
+  - getLocation                     √
   - (avg energy needed)
   - (calculate avg energy needed)
   - (time till charge)
   - (calc time till charge)
-  - 
+  - (distance)
+  -
+  -
   -
 
-car data
+(car data
   - location
   - current charge
   - misc. charge stats
   - get current charge
-  - get location
+  - get location)
   - 
+
+------------------------------------------------------
+
+VIEW
+range dashboard
+  - current location                                          div
+    (- refresh button)                                          (button)
+  - nearest chargers              -----------\                table
+    (- refresh button)                        \                 button
+  - trip information                          /               table & (table.row * 4) // 250, 300, 350, 400
+    - distance                    -----------/                  th + td
+    - buffer                                                    th + td
+    - avg energy                                                th + td
+    - rated charge needed                                       th + td
+  - input for customizable trip                                 th + td
+  - 
+
 
 ~~~~~~~~~~~~~~~~~~~
 MVP : get correct calcs from charging station or elsewhere
@@ -66,3 +86,29 @@ MVP : get correct calcs from charging station or elsewhere
 
 ~~~~~~~~~~~~~~~~~~~
 
+UI
+// load page
+// see closest superchargers (in range), based on battery size
+// select charger
+// see distance to charger (incl. elevation change) & corresponding route
+// see several avg energy usage and charge limit
+// i.e.   250kw/h     136 rated range     140 mi to charger     5 mi buffer   (slow or descending)    (55 mph)    (4:03 pm)
+// i.e.   350kw/h     165 rated range     140 mi to charger     5 mi buffer
+// i.e.   450kw/h     205 rated range     140 mi to charger     5 mi buffer   (climbing or high winds or fast)  (80 mph)...
+// input for energy usage || rated range || time of arrival will calculate the rest
+
+// UI
+// button to refresh
+// button to increase size
+// button change display mode (night vs day)
+
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+pitch email of myself
+- send to 10 random meetup organizers
