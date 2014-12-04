@@ -1,5 +1,5 @@
 rangeDashboard.view = function(){
-  return m("div .rangeDashboard", [
+  return m("div.rangeDashboard", [
     m("table", [
       m("tr", [
         m("th", "Average Energy"),
@@ -31,7 +31,7 @@ rangeDashboard.view = function(){
         m("td"),
         m("td")
         ]),
-      m("tr .userParameters", [
+      m("tr.userParameters", [
         m("td", m("input", {type: "number"})),
         m("td", m("input", {type: "number"})),
         m("td"),
