@@ -1,3 +1,10 @@
 rangeDashboard.view = function(){
-  return m("div .rangeDashboard", "here be ye range dashboard");
+  return m("div .rangeDashboard", [
+    m("table", [
+      m("th"),
+      m("tr"),
+      m("tr"),
+      m("tr")
+      ])
+    ]);
 }
