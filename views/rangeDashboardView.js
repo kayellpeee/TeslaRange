@@ -3,14 +3,34 @@ rangeDashboard.view = function(){
     m("table", [
       m("tr", [
         m("th", "Average Energy"),
-        m("th", "Estimated Charge Needed"),
-        m("th", "distance"),
-        m("th", "Estimated Buffer")
+        m("th", "Charge Needed"),
+        m("th", "Distance"),
+        m("th", "Buffer")
         ]),
-      m("tr"),
-      m("tr"),
-      m("tr"),
-      m("tr")
+      m("tr", [
+        m("td", "250 Wh/mi"),   // avg energy
+        m("td"),                // estimated charge needed
+        m("td"),                // distance
+        m("td")                 // estimated buffer
+        ]),
+      m("tr", [
+        m("td", "300 Wh/mi"),
+        m("td"),
+        m("td"),
+        m("td")
+        ]),
+      m("tr", [
+        m("td", "350 Wh/mi"),
+        m("td"),
+        m("td"),
+        m("td")
+        ]),
+      m("tr", [
+        m("td", "400 Wh/mi"),
+        m("td"),
+        m("td"),
+        m("td")
+        ])
       ])
     ]);
 }
