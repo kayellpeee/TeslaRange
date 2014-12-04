@@ -50,19 +50,19 @@ function testMithril(mock) {
     return headerRow.childNodes[1].tagName === "TH";
   });
   test(function(){
-    return headerRow.childNodes[1].textContent === "Estimated Charge Needed";
+    return headerRow.childNodes[1].textContent === "Charge Needed";
   });
   test(function(){
     return headerRow.childNodes[2].tagName === "TH";
   });
   test(function(){
-    return headerRow.childNodes[2].textContent === "distance";
+    return headerRow.childNodes[2].textContent === "Distance";
   });
   test(function(){
     return headerRow.childNodes[3].tagName === "TH";
   });
   test(function(){
-    return headerRow.childNodes[3].textContent === "Estimated Buffer";
+    return headerRow.childNodes[3].textContent === "Buffer";
   });
 
   var rows = [].slice.call(table.childNodes, (1));
