@@ -20,9 +20,10 @@ function testMithril(mock) {
   test(function(){
     return root.childNodes[0].childNodes[0].tagName === "TABLE";
   });
+
   var table = root.childNodes[0].childNodes[0];
   test(function(){
-    return table.childNodes[0].tagName === "TH";
+    return table.childNodes[0].tagName === "TR";
   });
   test(function(){
     return table.childNodes[1].tagName === "TR";
@@ -35,6 +36,33 @@ function testMithril(mock) {
   });
   test(function(){
     return table.childNodes[4].tagName === "TR";
+  });
+
+  // i.e.   250kw/h     136 rated range     140 mi to charger     5 mi buffer   (slow or descending)    (55 mph)    (4:03 pm)
+  var headerRow = table.childNodes[0];
+  test(function(){
+    return headerRow.childNodes[0].tagName === "TH";
+  });
+  test(function(){
+    return headerRow.childNodes[0].textContent === "Average Energy";
+  });
+  test(function(){
+    return headerRow.childNodes[1].tagName === "TH";
+  });
+  test(function(){
+    return headerRow.childNodes[1].textContent === "Estimated Charge Needed";
+  });
+  test(function(){
+    return headerRow.childNodes[2].tagName === "TH";
+  });
+  test(function(){
+    return headerRow.childNodes[2].textContent === "distance";
+  });
+  test(function(){
+    return headerRow.childNodes[3].tagName === "TH";
+  });
+  test(function(){
+    return headerRow.childNodes[3].textContent === "Estimated Buffer";
   });
 
 };
