@@ -85,13 +85,13 @@ function testMithril(mock) {
     return rows[0].childNodes[0].textContent === "250 Wh/mi";
   });
   test(function(){
-    return rows[0].childNodes[1].textContent === "300 Wh/mi";
+    return rows[1].childNodes[0].textContent === "300 Wh/mi";
   });
   test(function(){
-    return rows[0].childNodes[2].textContent === "350 Wh/mi";
+    return rows[2].childNodes[0].textContent === "350 Wh/mi";
   });
   test(function(){
-    return rows[0].childNodes[3].textContent === "400 Wh/mi";
+    return rows[3].childNodes[0].textContent === "400 Wh/mi";
   });
 
 };
