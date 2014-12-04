@@ -38,7 +38,6 @@ function testMithril(mock) {
     return table.childNodes[4].tagName === "TR";
   });
 
-  // i.e.   250kw/h     136 rated range     140 mi to charger     5 mi buffer   (slow or descending)    (55 mph)    (4:03 pm)
   var headerRow = table.childNodes[0];
   test(function(){
     return headerRow.childNodes[0].tagName === "TH";
@@ -65,6 +64,7 @@ function testMithril(mock) {
     return headerRow.childNodes[3].textContent === "Buffer";
   });
 
+  // i.e.   250kw/h     136 rated range     140 mi to charger     5 mi buffer   (slow or descending)    (55 mph)    (4:03 pm)
   var rows = [].slice.call(table.childNodes, (1));
   rows.forEach(function(row){
     test(function(){
@@ -92,6 +92,33 @@ function testMithril(mock) {
   });
   test(function(){
     return rows[3].childNodes[0].textContent === "400 Wh/mi";
+  });
+
+  // input row (for user-inputted parameters)
+  test(function(){
+    return rows[4].className === "userParameters";
+  });
+  test(function(){
+    return rows[4].tagName === "TR";
+  });
+  test(function(){
+    return rows[4].childNodes[0].tagName === "TD";
+  });
+  test(function(){
+    // input for avg energy
+    return rows[4].childNodes[0].childNodes[0].tagName === "INPUT";
+  });
+  test(function(){
+    // input for Charge Needed
+    return rows[4].childNodes[1].childNodes[0].tagName === "INPUT";
+  });
+  test(function(){
+    // td for distance
+    return rows[4].childNodes[2].tagName === "TD";
+  });
+  test(function(){
+    // input for buffer
+    return rows[4].childNodes[3].childNodes[0].tagName === "INPUT";
   });
 
 };
