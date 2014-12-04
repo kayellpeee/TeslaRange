@@ -30,6 +30,12 @@ rangeDashboard.view = function(){
         m("td"),
         m("td"),
         m("td")
+        ]),
+      m("tr .userParameters", [
+        m("td", m("input", {type: "text"})),
+        m("td", m("input", {type: "text"})),
+        m("td"),
+        m("td", m("input", {type: "text"}))
         ])
       ])
     ]);
