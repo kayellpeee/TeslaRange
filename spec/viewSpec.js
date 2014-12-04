@@ -17,6 +17,22 @@ function testMithril(mock) {
   test(function(){
     return root.childNodes[0].className === "rangeDashboard";
   });
+  test(function(){
+    return root.childNodes[0].childNodes[0].tagName === "TABLE";
+  });
+  var table = root.childNodes[0].childNodes[0];
+  test(function(){
+    return table.childNodes[0].tagName === "TH";
+  });
+  test(function(){
+    return table.childNodes[1].tagName === "TR";
+  });
+  test(function(){
+    return table.childNodes[2].tagName === "TR";
+  });
+  test(function(){
+    return table.childNodes[3].tagName === "TR";
+  });
 
 };
 
