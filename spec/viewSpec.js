@@ -65,6 +65,35 @@ function testMithril(mock) {
     return headerRow.childNodes[3].textContent === "Estimated Buffer";
   });
 
+  var rows = [].slice.call(table.childNodes, (1));
+  rows.forEach(function(row){
+    test(function(){
+      return row.childNodes[0].tagName === "TD";
+    });
+    test(function(){
+      return row.childNodes[1].tagName === "TD";
+    });
+    test(function(){
+      return row.childNodes[2].tagName === "TD";
+    });
+    test(function(){
+      return row.childNodes[3].tagName === "TD";
+    });
+  });
+
+  test(function(){
+    return rows[0].childNodes[0].textContent === "250 Wh/mi";
+  });
+  test(function(){
+    return rows[0].childNodes[1].textContent === "300 Wh/mi";
+  });
+  test(function(){
+    return rows[0].childNodes[2].textContent === "350 Wh/mi";
+  });
+  test(function(){
+    return rows[0].childNodes[3].textContent === "400 Wh/mi";
+  });
+
 };
 
 testMithril(mock);
