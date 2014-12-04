@@ -33,6 +33,9 @@ function testMithril(mock) {
   test(function(){
     return table.childNodes[3].tagName === "TR";
   });
+  test(function(){
+    return table.childNodes[4].tagName === "TR";
+  });
 
 };
 
