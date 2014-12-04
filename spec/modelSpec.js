@@ -1,6 +1,4 @@
-function testMithril(mockWindow) {
-  window = m.deps(mockWindow);
-
+function testMithril() {
   // tests for rangeCalculations model
   test(function(){
 
@@ -141,6 +139,6 @@ function testMithril(mockWindow) {
 
 };
 
-testMithril(mock.window);
+testMithril();
 
 test.print(function(value) {console.log(value)});
