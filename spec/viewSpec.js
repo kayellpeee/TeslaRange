@@ -131,7 +131,7 @@ function testMithril(mock) {
     return rows[4].childNodes[3].childNodes[0].type === "number";
   });
 
-};
+}
 
 testMithril(mock);
 

@@ -137,7 +137,7 @@ function testMithril() {
     return rangeCalculations.model.chargeNeeded.averageEnergy === options.averageEnergy;
   });
 
-};
+}
 
 testMithril();
 
