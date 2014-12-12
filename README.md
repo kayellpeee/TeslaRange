@@ -19,12 +19,13 @@ controllers:    expose a scoped set of model-level functionality (the controller
 _______________________________________________________________________________
 
 view:
-  - dashboard view
+  - dashboard view                  √
   - settings view
+  (- car data view)
 
 model:
-  - calculations model
-  - car data model
+  - calculations models             √
+  (- car data model)
   - settings model
 
 controller:
@@ -80,9 +81,20 @@ range dashboard
   - 
 
 
+```````````````````````````````````````````````````````````
+
+controller - glue (defines what part of the (view) model is relevant for the current page)
+range dashboard
+  - avg energy
+  - distance
+  - charge needed
+  - buffer
+  - fnc to render user input to page
+
+
 ~~~~~~~~~~~~~~~~~~~
 MVP : get correct calcs from charging station or elsewhere
-+ live updates (charge till time, avg energy, buffer etc)
++ live updates (charge till time, avg energy, buffer etc. - with some view for current car stats on an interval refresh)
 
 ~~~~~~~~~~~~~~~~~~~
 
@@ -101,11 +113,6 @@ UI
 // button to refresh
 // button to increase size
 // button change display mode (night vs day)
-
-
-
-
-
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
