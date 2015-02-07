@@ -15,4 +15,4 @@ rangeDashboard.controller = (function(){
   //        -> charge
   //        -> buffer
   return methods;
-}());  
+}());

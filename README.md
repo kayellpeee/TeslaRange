@@ -113,9 +113,3 @@ UI
 // button to refresh
 // button to increase size
 // button change display mode (night vs day)
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-pitch email of myself
-- send to 10 random meetup organizers
